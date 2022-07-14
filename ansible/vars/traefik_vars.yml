@@ -4,12 +4,12 @@
 #
 #  - jinja2 template variables
 #
-root_domain: eoastest2.xyz
-web_domain: hub.eoastest2.xyz
+root_domain: eoastest.xyz
+web_domain: hub.eoastest.xyz
 auth_domain: auth.{{ root_domain }}
 path_prefix_whoami1: whoami1
 path_prefix_whoami2: whoami2
-network_name: traefik_net
+network_name: proxy_aug07
 traefik_forward_auth_service: traefik2-forward-auth
 traefik_forward_authhost_service: traefik2-forward-authhost
 traefik_forward_auth_container_name: forward_auth2

@@ -1,5 +1,14 @@
 ---
 - hosts: all
+  #
+  # vars/jovyan_vars.yml:
+  #  - git_remote_repos
+  #  - git_remote_path
+  #
+  # vars/e211_jupyterhub.yml
+  #  - e211_jupyterhub_template_list
+  #
+  #
   vars_files:
     - vars/jovyan_vars.yml
     - vars/traefik_vars.yml
@@ -16,47 +25,42 @@
         path: "{{ git_remote_path }}/jupyterhub/e211hub_image"
         state: directory
         mode: '777'
-    - name: create book container
-      file:
-        path: "{{ git_remote_path }}/jupyterhub/e211book_image"
-        state: directory
-        mode: '777'
     - name: fill and copy templates for e211hub
       template:
         src: '{{ item.src }}'
         dest: '{{ item.dest }}'
       loop:
         "{{ e211_jupyterhub_template_list }}"
-    #https://ahelpme.com/software/ansible/ansible-using-ansible-vault-with-copy-module-to-decrypt-on-the-fly-files/
-    #
-    #  e211 website
-    #
-    - name: create website
-      file:
-        path: "{{ git_remote_path }}/website"
-        state: directory
-        mode: '777'
-    - name: decrypt and copy e211_user_list.txt
-      copy:
-        src: 'files/jupyterhub/e211_vault_user_list.txt'
-        dest: '{{ git_remote_path }}/jupyterhub/{{ hub_service_name }}_image/user_list.txt'
-        decrypt: yes
-        backup: no
-    - name: fill and copy templates for e211 website
-      template:
-        src: '{{ item.src }}'
-        dest: '{{ item.dest }}'
-      loop:
-        "{{ e211_website_template_list }}"
-    - name: make the html source folder
-      file:
-        path: "{{ dest_dir }}"
-        state: directory
-    - name: rsync the rendered book
-      ansible.posix.synchronize:
-        src: "{{ book_local_html }}"
-        dest: "{{ dest_dir }}"
-        group: "no"
+    # #https://ahelpme.com/software/ansible/ansible-using-ansible-vault-with-copy-module-to-decrypt-on-the-fly-files/
+    # #
+    # #  e211 website
+    # #
+    # - name: create website
+    #   file:
+    #     path: "{{ git_remote_path }}/website"
+    #     state: directory
+    #     mode: '777'
+    # - name: decrypt and copy e211_user_list.txt
+    #   copy:
+    #     src: 'files/jupyterhub/e211_vault_user_list.txt'
+    #     dest: '{{ git_remote_path }}/jupyterhub/{{ hub_service_name }}_image/user_list.txt'
+    #     decrypt: yes
+    #     backup: no
+    # - name: fill and copy templates for e211 website
+    #   template:
+    #     src: '{{ item.src }}'
+    #     dest: '{{ item.dest }}'
+    #   loop:
+    #     "{{ e211_website_template_list }}"
+    # - name: make the html source folder
+    #   file:
+    #     path: "{{ dest_dir }}"
+    #     state: directory
+    # - name: rsync the rendered book
+    #   ansible.posix.synchronize:
+    #     src: "{{ book_local_html }}"
+    #     dest: "{{ dest_dir }}"
+    #     group: "no"
         
 
 

@@ -17,16 +17,13 @@ c.JupyterHub.hub_connect_ip = '{{ hub_service_name }}'
 
 # pick a docker image. This should have the same version of jupyterhub
 # two identical entries here to show image choice pulldown menue
-c.DockerSpawner.allowed_images = {'e211' : '{{ dockerhub_id }}/{{ notebook_service_name }}:{{ container_version }}',
-                                  'a405' : '{{ dockerhub_id }}/{{ notebook_service_name }}:{{ container_version }}'}
+c.DockerSpawner.allowed_images = {'e211' : '{{ dockerhub_id }}/{{ notebook_service_name }}:{{ container_version }}'}
 notebook_dir = "/home/jovyan/work"
 c.DockerSpawner.notebook_dir = notebook_dir
 
 # tell the user containers to connect to our docker network
 c.DockerSpawner.network_name = '{{ network_name }}'
-c.DockerSpawner.volumes = {"jupyterhub-user-{username}": notebook_dir,
-                          "/home/jovyan/repos/ansible_intro/jupyterhub/data_share": 
-                           {"bind": "/home/jovyan/work/data_share", "mode": "rw"}}
+c.DockerSpawner.volumes = {"jupyterhub-user-{username}": notebook_dir}
 
 # delete containers when the stop
 c.DockerSpawner.remove = True
