@@ -35,7 +35,7 @@ services:
     # command: ["tail", "-F","missing_file"]
 
   e211_notebook:
-    image: jovyan/minimal-notebook:latest
+    image: jovyan/e211-notebook:latest
     build:
       context: e211book-image
       dockerfile: ./Dockerfile
