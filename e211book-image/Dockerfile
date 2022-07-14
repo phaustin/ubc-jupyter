@@ -16,7 +16,7 @@ COPY --chown=${NB_USER}:${NB_GID} ./condarc.yml ${HOME}/.condarc
 
 RUN echo "make sure work directory is owned by jovyan" \
    && chown ${NB_USER} ${HOME}/work  \
-   && chgrp $NB_GID} ${HOME}/work
+   && chgrp ${NB_USER} ${HOME}/work
 
 # Create "notebook" conda environment
 RUN echo "Copying conda-linux-64.lock into homedir..."
