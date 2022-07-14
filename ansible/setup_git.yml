@@ -1,0 +1,35 @@
+---
+- hosts: all
+  vars_files:
+    - vars/jovyan_vars.yml
+
+  tasks:
+    - name: add global gitconfig user.email
+      community.general.git_config:
+        name: user.email
+        scope: global
+        value: "{{ git_email }}"
+
+    - name: add global git user.name
+      community.general.git_config:
+        name: user.name
+        scope: global
+        value: "{{ git_username }}"
+
+    - name: write credentials to .bashrc 
+      blockinfile:
+        marker: "# ANSIBLE GITCREDS_BLOCK"
+        create: false
+        dest: "~/.bashrc"
+        block: "{{ gitcreds }}"
+
+    - name: Create repositor directory
+      file:
+        path: "{{ git_remote_repos }}"
+        state: directory
+
+    - name: checkout git repo
+      ansible.builtin.git:
+        repo: "{{ github_repo }}"
+        dest: "{{ git_remote_path }}"
+
