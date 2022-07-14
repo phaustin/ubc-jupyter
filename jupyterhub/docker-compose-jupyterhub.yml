@@ -1,0 +1,35 @@
+version: '3.7'
+
+#
+# see vars/e211_jupyterhub.yml for
+# hub_service_name, dockerhub_id, container_version, hub_domain
+#
+services:
+
+  oauthe211hub:
+    build:
+        context: e211hub-image
+        dockerfile: ./Dockerfile
+    image: phaustin/e211hub:latest
+    container_name: e211hub_latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - JHUB_OAUTH_CALLBACK_URL
+      - JHUB_OAUTH_CLIENT_ID
+      - JHUB_OAUTH_CLIENT_SECRET
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.oauthe211hub.rule=Host(`e211hub.eoastest.xyz`)"
+      - traefik.http.routers.oauthe211hub.tls=true
+      - traefik.http.routers.oauthe211hub.tls.certresolver=lets-encrypt
+      - "traefik.http.routers.oauthe211hub.service=oauthe211hub"
+      - "traefik.http.services.oauthe211hub.loadbalancer.server.port=8000"
+    restart: on-failure
+    networks:
+      - proxy_aug07
+
+
+networks:
+  proxy_aug07:
+    external: true
