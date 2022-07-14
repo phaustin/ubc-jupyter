@@ -14,6 +14,10 @@ COPY --chown=${NB_USER}:${NB_GID} ./bashrc_conda.txt /tmp
 COPY --chown=${NB_USER}:${NB_GID} ./condarc.yml /opt/conda/.condarc
 COPY --chown=${NB_USER}:${NB_GID} ./condarc.yml ${HOME}/.condarc
 
+RUN echo "make sure work directory is owned by jovyan" \
+   && chown ${NB_USER} ${HOME}/work  \
+   && chgrp $NB_GID} ${HOME}/work
+
 # Create "notebook" conda environment
 RUN echo "Copying conda-linux-64.lock into homedir..."
 COPY --chown=${NB_USER}:${NB_GID} ./conda-linux-64.lock ./requirements.txt ${HOME}/

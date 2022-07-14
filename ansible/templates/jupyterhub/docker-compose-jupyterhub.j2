@@ -7,9 +7,11 @@ version: '3.7'
 services:
 
   {{ e211_hub_service_name }}:
-    build: {{ e211_hub_service_name }}_image
-    image: {{ dockerhub_id }}/{{ e211_hub_service_name }}:{{ e211_container_version }}
-    container_name: {{ e211_hub_service_name }}_{{ e211_container_version }}
+    build:
+        context: {{ e211_hub_image_name }}-image
+        dockerfile: ./Dockerfile
+    image: {{ dockerhub_id }}/{{ e211_hub_image_name }}:{{ e211_container_version }}
+    container_name: {{ e211_hub_image_name }}_{{ e211_container_version }}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
@@ -18,10 +20,10 @@ services:
       - JHUB_OAUTH_CLIENT_SECRET
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.jhub.rule=Host(`{{ e211_hub_domain }}`)"
-      - traefik.http.routers.jhub.tls=true
-      - traefik.http.routers.jhub.tls.certresolver=lets-encrypt
-      - "traefik.http.routers.jhub.service={{e211_hub_service_name }}"
+      - "traefik.http.routers.{{ e211_hub_service_name }}.rule=Host(`{{ e211_hub_domain }}`)"
+      - traefik.http.routers.{{ e211_hub_service_name }}.tls=true
+      - traefik.http.routers.{{ e211_hub_service_name }}.tls.certresolver=lets-encrypt
+      - "traefik.http.routers.{{ e211_hub_service_name }}.service={{e211_hub_service_name }}"
       - "traefik.http.services.{{ e211_hub_service_name }}.loadbalancer.server.port=8000"
     restart: on-failure
     networks:

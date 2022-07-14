@@ -20,17 +20,22 @@
   tasks:
     #
     # e211 jupyterhub
-    - name: create jupyterhub directory
-      file:
-        path: "{{ git_remote_path }}/jupyterhub/e211hub_image"
-        state: directory
-        mode: '777'
+    #
+    # copy files to ~/repos/ubc-jupyter/jupyterhub/e211hub-image
+    #
     - name: fill and copy templates for e211hub
       template:
         src: '{{ item.src }}'
         dest: '{{ item.dest }}'
       loop:
         "{{ e211_jupyterhub_template_list }}"
+    - name: decrypt and copy user_list.txt
+      copy:
+        src: 'files/jupyterhub/e211_vault_user_list.txt'
+        dest: '{{ git_remote_path }}/jupyterhub/{{ e211_hub_image_name }}-image/user_list.txt'
+        decrypt: yes
+        backup: no
+        
     # #https://ahelpme.com/software/ansible/ansible-using-ansible-vault-with-copy-module-to-decrypt-on-the-fly-files/
     # #
     # #  e211 website

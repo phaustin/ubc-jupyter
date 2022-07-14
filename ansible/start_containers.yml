@@ -2,15 +2,15 @@
 - hosts: all
   vars_files:
     - vars/jovyan_vars.yml
-    - vars/jupyterhub_vars.yml
+    - vars/e211_jupyterhub.yml
     - vars/vault.yml
   tasks:
     - name: start jupyterhub
       shell: "docker-compose -f docker-compose-jupyterhub.yml up -d"
       environment:
         JHUB_OAUTH_CALLBACK_URL: "{{ JHUB_OAUTH_CALLBACK_URL  }}"
-        JHUB_OAUTH_CLIENT_ID: "{{ vault_jhub_oauth_client_id  }}"
-        JHUB_OAUTH_CLIENT_SECRET: "{{ vault_jhub_oauth_client_secret }}"
+        JHUB_OAUTH_CLIENT_ID: "{{ vault_e211hub_oauth_client_id  }}"
+        JHUB_OAUTH_CLIENT_SECRET: "{{ vault_e211hub_oauth_client_secret }}"
       register: jupyterhub_status
       args:
         chdir: "{{ git_remote_path }}/jupyterhub"
