@@ -1,0 +1,31 @@
+---
+#
+#  setup_jovyan.yml
+#
+new_user: 'jovyan'
+new_group: 'jovyan'
+new_user_uid: '1004'
+new_user_gid: '1002'
+#
+#  setup_docker.yml
+#
+docker_compose_version: "1.29.2"
+#
+# setup_conda.yml
+#
+conda_prefix: /opt/miniconda3
+#
+# setup_git.yml
+#
+gitcreds: |
+  export GH_SCOPED_CREDS_CLIENT_ID=Iv1.a7bfeeb8a061168a
+  export GH_SCOPED_CREDS_APP_URL=https://github.com/apps/tlef-auth
+git_username:
+  "Phil Austin"
+git_email:
+  "paustin@eoas.ubc.ca"
+github_repo:
+  "https://github.com/phaustin/ubc_jupyter.git"
+git_remote_repos: "~/repos"
+git_remote_path: "{{ git_remote_repos }}/ubc_jupyter"
+

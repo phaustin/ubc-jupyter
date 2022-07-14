@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+
+  e211_notebook:
+    image: phaustin/e211-notebook:latest
+    build:
+      context: e211-image
+      dockerfile: ./Dockerfile
+      args:
+        OWNER: "phaustin"
+    container_name: e211_notebook
+    labels:
+      - "traefik.enable=false"
+    ports:
+      - "8888:8888"
+    command: ["tail", "-F","missing_file"]
+
+    e211hub:
+      build: e211hub_image
+      image: phaustin/e211hub:may27
+      container_name: e211hub_may27
+      volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+        environment:
+          - JHUB_OAUTH_CALLBACK_URL
+          - JHUB_OAUTH_CLIENT_ID
+          - JHUB_OAUTH_CLIENT_SECRET
+          labels:
+            - "traefik.enable=true"
+            - "traefik.http.routers.jhub.rule=Host(`jupyter.eoastest2.xyz`)"
+            - traefik.http.routers.jhub.tls=true
+            - traefik.http.routers.jhub.tls.certresolver=lets-encrypt
+            - "traefik.http.routers.jhub.service=e211hub"
+            - "traefik.http.services.e211hub.loadbalancer.server.port=8000"
+            restart: on-failure
+            networks:
+              - traefik_net
+    

@@ -1,0 +1,60 @@
+version: '3.7'
+# https://docs.docker.com/compose/compose-file/#init
+
+services:
+
+  {{ nbgrader_service }}:
+    image: {{ nbgrader_image }}
+    build:
+        context: nbgrader_image
+    networks:
+      - {{ network_name }}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./demo/source:/home/jovyan/source
+      - ./demo/release:/home/jovyan/release
+      - ./demo/{{ nbgrader_exchange_dir }}:/home/jovyan/{{ nbgrader_exchange_dir }}
+      - $HOME/eosc211:/home/jovyan/eosc211
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.nbgrader.rule=Host(`{{ nbgrader_domain }}`)
+      - traefik.http.routers.nbgrader.tls=true
+      - traefik.http.routers.nbgrader.tls.certresolver=lets-encrypt
+      - traefik.http.routers.nbgrader.service={{ nbgrader_service }}
+      - traefik.http.services.nbgrader.loadbalancer.server.port=8888
+      - "traefik.http.routers.nbgrader.middlewares={{ nbgrader_forward_auth_service }}"
+    command: ["jupyter", "notebook","--NotebookApp.token=''","--debug"]
+    container_name: {{ nbgrader_container }}
+#
+# use github user id via
+# https://github.com/thomseddon/traefik-forward-auth/pull/159
+#
+  {{ nbgrader_forward_auth_service }}:
+    image: phaustin/traefik-forward-auth:pr159
+    environment:
+      - DEFAULT_PROVIDER=generic-oauth
+      - INSECURE_COOKIE=false 
+      - PROVIDERS_GENERIC_OAUTH_AUTH_URL=https://github.com/login/oauth/authorize
+      - PROVIDERS_GENERIC_OAUTH_TOKEN_URL=https://github.com/login/oauth/access_token
+      - PROVIDERS_GENERIC_OAUTH_USER_URL=https://api.github.com/user
+      - PROVIDERS_GENERIC_OAUTH_CLIENT_ID
+      - PROVIDERS_GENERIC_OAUTH_CLIENT_SECRET
+      - COOKIE_NAME=_nbgrader_eoastest3
+      - WHITELIST
+      - SECRET
+      - USER_ID_PATH=login
+    labels:
+      - "traefik.http.middlewares.{{ nbgrader_forward_auth_service }}.forwardauth.address=http://{{ nbgrader_forward_auth_service }}:4181"
+      - "traefik.http.middlewares.{{ nbgrader_forward_auth_service }}.forwardauth.authResponseHeaders=X-Forwarded-User"
+      - "traefik.http.services.{{ nbgrader_forward_auth_service }}.loadbalancer.server.port=4181"
+      - traefik.enable=true
+    networks:
+      - {{ network_name }}
+    container_name: {{ nbgrader_forward_auth_container_name }}
+
+networks:
+    {{ network_name }}:
+      driver: bridge
+      name: {{ network_name }}
+
+
