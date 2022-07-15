@@ -1,7 +1,7 @@
 ARG OWNER=jovyan
 ARG BASE_CONTAINER=$OWNER/minimal-notebook:latest
 FROM $BASE_CONTAINER
-ENV CONDA_ENV=notebook 
+ENV CONDA_ENV=base
 ENV NB_PYTHON_PREFIX=${CONDA_DIR}/envs/${CONDA_ENV}
 
 # set up notebook config for single notebook server
@@ -17,7 +17,6 @@ COPY --chown=${NB_USER}:${NB_GID} ./condarc.yml ${HOME}/.condarc
 RUN echo "make sure work directory is owned by jovyan" \
    && rm -rf ${HOME}/work
 
-
 # Create "notebook" conda environment
 RUN echo "Copying conda-linux-64.lock into homedir..."
 COPY --chown=${NB_USER}:${NB_GID} ./conda-linux-64.lock ./requirements.txt ${HOME}/
@@ -30,7 +29,7 @@ RUN echo "create work directory owned by jovyan" \
 RUN echo "conda activate ${CONDA_ENV}" >> ${HOME}/.bashrc
 
 RUN echo "install environment from conda-linux-64.lock..." \
-    && mamba create --name ${CONDA_ENV} --file conda-linux-64.lock \
+    && mamba install--name base --file conda-linux-64.lock \
     && mamba clean -yaf \
     && find ${CONDA_DIR} -follow -type f -name '*.a' -delete \
     && find ${CONDA_DIR} -follow -type f -name '*.pyc' -delete 

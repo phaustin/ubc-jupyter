@@ -1,4 +1,5 @@
 #
 # append this to ~jovyan/.bashrc to set up interactive bash with conda
 #
-conda activate notebook
+conda activate base
+

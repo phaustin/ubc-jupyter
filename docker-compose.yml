@@ -11,7 +11,6 @@ services:
         NB_USER: "jovyan"
         NB_UID: "1002"
         NB_GID: "1004"
-        NB_CONDA_ENV: "notebook"
     container_name: base_notebook
     labels:
       - "traefik.enable=false"
@@ -42,7 +41,6 @@ services:
       dockerfile: ./Dockerfile
       args:
         OWNER: "jovyan"
-        NB_CONDA_ENV: "notebook"
     depends_on:
       - minimal_notebook
     container_name: e211_notebook
