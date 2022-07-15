@@ -17,8 +17,8 @@ c.JupyterHub.hub_connect_ip = 'oauthe211hub'
 
 # pick a docker image. This should have the same version of jupyterhub
 # two identical entries here to show image choice pulldown menue
-c.DockerSpawner.allowed_images = {'e211' : 'phaustin/e211-notebook:latest',
-                                  'e350' : 'phaustin/e211-notebook:latest'}
+c.DockerSpawner.allowed_images = {'e211' : 'jovyan/e211-notebook:latest',
+                                  'e350' : 'jovyan/e211-notebook:latest'}
 notebook_dir = "/home/jovyan/work"
 c.DockerSpawner.notebook_dir = notebook_dir
 
