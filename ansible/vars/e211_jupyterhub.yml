@@ -5,7 +5,7 @@
 # 
 #
 e211_container_version: latest
-dockerhub_id: jovyan
+e211_dockerhub_id: jovyan
 e211_hub_service_name: oauthe211hub
 e211_hub_image_name: e211hub
 e211_hub_domain: "e211hub.eoastest.xyz"
