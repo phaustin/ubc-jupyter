@@ -29,8 +29,8 @@ RUN echo "create work directory owned by jovyan" \
 
 RUN echo "conda activate ${CONDA_ENV}" >> ${HOME}/.bashrc
 
-RUN echo "Creating environment from conda-linux-64.lock..." \
-    && mamba create --name ${CONDA_ENV} --file conda-linux-64.lock \
+RUN echo "install environment from conda-linux-64.lock..." \
+    && mamba install --name base --file conda-linux-64.lock \
     && mamba clean -yaf \
     && find ${CONDA_DIR} -follow -type f -name '*.a' -delete \
     && find ${CONDA_DIR} -follow -type f -name '*.pyc' -delete 
