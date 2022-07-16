@@ -1,7 +1,6 @@
 ARG OWNER=jovyan
 ARG BASE_CONTAINER=$OWNER/minimal-notebook:latest
 FROM $BASE_CONTAINER
-ENV CONDA_ENV=base
 ENV NB_PYTHON_PREFIX=${CONDA_DIR}
 
 # set up notebook config for single notebook server
