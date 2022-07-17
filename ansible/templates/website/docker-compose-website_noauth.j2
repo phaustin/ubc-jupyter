@@ -19,6 +19,47 @@ services:
     networks:
       - {{ network_name }}
 
+
+  whoamiA301:
+    image: "containous/whoami"
+    container_name: whoamiA301
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      - traefik.enable=true
+      - "traefik.http.routers.whoamiA301.rule=Host(`{{ book_domain }}`) && PathPrefix(`/a301`)"
+      - traefik.http.routers.whoamiA301.tls=true
+      - traefik.http.routers.whoamiA301.tls.certresolver=lets-encrypt
+      - traefik.http.routers.whoamiA301.service=whoamiA301
+      - traefik.http.services.whoamiA301.loadbalancer.server.port=80
+      - "traefik.http.routers.whoamiA301.middlewares=whoamiA301_chain,a301Auth@file"
+      - "traefik.http.middlewares.whoamiA301-stripprefix.stripprefix.prefixes=/a301"
+      - "traefik.http.middlewares.whoamiA301_chain.chain.middlewares=strip-prefix-start@file,strip-prefix-end@file,whoamiA301-stripprefix"
+    restart: on-failure
+    networks:
+      - {{ network_name }}
+
+
+  whoamiB301:
+    image: "containous/whoami"
+    container_name: whoamiB301
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      - traefik.enable=true
+      - "traefik.http.routers.whoamiB301.rule=Host(`{{ book_domain }}`) && PathPrefix(`/b301`)"
+      - traefik.http.routers.whoamiB301.tls=true
+      - traefik.http.routers.whoamiB301.tls.certresolver=lets-encrypt
+      - traefik.http.routers.whoamiB301.service=whoamiB301
+      - traefik.http.services.whoamiB301.loadbalancer.server.port=80
+      - "traefik.http.routers.whoamiB301.middlewares=whoamiB301_chain,a301Auth@file"
+      - "traefik.http.middlewares.whoamiB301-stripprefix.stripprefix.prefixes=/a301"
+      - "traefik.http.middlewares.whoamiB301_chain.chain.middlewares=strip-prefix-start@file,whoamiB301-stripprefix"
+    restart: on-failure
+    networks:
+      - {{ network_name }}
+
+
 networks:
     {{ network_name }}:
       external: true
