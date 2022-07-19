@@ -11,11 +11,11 @@ dependencies:
   - ghp-import
   - git
   - jupytext
-  - jupyter-book
   - matplotlib
   - numpy
   - nbgitpuller
   - pandas
   - pip
   - pillow
+  - discretize
 # conda-lock --kind explicit --file environment.yml -p linux-64
