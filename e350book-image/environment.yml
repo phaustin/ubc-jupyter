@@ -18,4 +18,6 @@ dependencies:
   - pip
   - pillow
   - discretize
+  - empymod>=2.0.0
+  - ipywidgets>=0.6.0
 # conda-lock --kind explicit --file environment.yml -p linux-64
