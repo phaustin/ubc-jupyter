@@ -22,4 +22,6 @@ dependencies:
   - ipywidgets>=0.6.0
   - mkl>=2021.3.0
   - pymatsolver
+  - scipy>=1.7
+  - scikit-learn
 # conda-lock --kind explicit --file environment.yml -p linux-64
