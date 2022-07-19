@@ -1,32 +1,21 @@
-name: mainsite
+name: e211_notebook
 channels:
-  - eoas_ubc
   - conda-forge
 dependencies:
-  - conda-lock
-  - cvxopt
-  - deepdish
-  - discretize=0.7.0
-  - empymod>=2.0.0
-  - ipywidgets>=0.6.0
-  - jupyter
+  - mamba
+  - notebook
   - jupyterhub
   - jupyterlab
+  - bokeh
+  - conda-lock
+  - ghp-import
+  - git
   - jupytext
-  - mamba
-  - matplotlib<3.5
-  - mkl>=2021.3.0
+  - jupyter-book
+  - matplotlib
+  - numpy
   - nbgitpuller
-  - notebook
-  - numpy>=1.21
-  - Pillow
+  - pandas
   - pip
-  - pymatsolver
-  - python=3.9
-  - requests
-  - scipy>=1.7
-  - scikit-learn<1.0
-  - SimPEG=0.15.0
+  - pillow
 # conda-lock --kind explicit --file environment.yml -p linux-64
-
-
