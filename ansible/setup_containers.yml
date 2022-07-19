@@ -14,8 +14,6 @@
     - vars/traefik_vars.yml
     - vars/e211_jupyterhub.yml
     - vars/e350_jupyterhub.yml
-    - vars/e211_website.yml
-    - vars/e350_website.yml
 
   tasks:
     #

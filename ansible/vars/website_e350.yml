@@ -7,10 +7,8 @@ git_remote_path: "{{ git_remote_repos }}/ubc-jupyter"
 website_dir: "{{ git_remote_path }}/website_e350"
 book_domain: "courses.{{ root_domain }}"
 book_prefix: "/e350"
-book_name: "e350_web"
 book_local_html: "/home/phil/repos/ubc-jupyter/website/e350_index/"
 book_remote_html: "{{ website_dir }}/html/"
-book_route: "/e350"
 dest_dir: "{{ git_remote_path }}/{{ website_dir }}/{{ book_remote_path }}"
 website_template_list:
   - { src: "templates/website/docker-compose-website_noauth.j2"  , dest: "{{ website_dir }}/docker-compose-website.yml" }
