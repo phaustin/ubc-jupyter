@@ -1,0 +1,24 @@
+---
+#
+# setup_git.yml
+#
+gitcreds: |
+  export GH_SCOPED_CREDS_CLIENT_ID=Iv1.a7bfeeb8a061168a
+  export GH_SCOPED_CREDS_APP_URL=https://github.com/apps/tlef-auth
+git_username:
+  "Phil Austin"
+git_email:
+  "paustin@eoas.ubc.ca"
+github_repo:
+  "https://github.com/phaustin/ubc-jupyter.git"
+git_remote_repos: "~/repos"
+git_remote_path: "{{ git_remote_repos }}/ubc-jupyter"
+
+ubc-jupyter-repo: 
+  src: "https://github.com/phaustin/ubc-jupyter.git"
+  dest: "{{ git_remote_path }}"
+
+gpgLabs-repo:
+  src: "https://github.com/phaustin/gpgLabs.git"
+  dest: "{{ git_remote_repos }} /gpgLabs"
+

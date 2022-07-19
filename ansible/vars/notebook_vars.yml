@@ -1,0 +1,20 @@
+---
+#
+#  - jinja2 template variables
+#
+template_dir:
+  notebook_domain: notebook.eoastest2.xyz
+  notebook_forward_auth_service: notebook-forward-authII
+  notebook_forward_auth_container_name: notebook-forward-auth-containerII
+  notebook_service: notebook
+  notebook_container: notebook_container
+  notebook_image: notebook_image
+  notebook_exchange_dir: EOSC211_exchange
+  template_dir: template_dir
+  notebook_template_list:
+    - { src: "templates/template_dir/docker-compose-nbgrader-oauth.j2"  , dest: "{{ git_remote_path }}/nbgrader/docker-compose-nbgrader-oauth.yml" }
+    - { src: "templates/nbgrader/nbgrader_config.j2"  , dest: "{{ git_remote_path }}/nbgrader/nbgrader_image/nbgrader_config.py" }
+
+
+
+

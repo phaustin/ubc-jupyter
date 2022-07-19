@@ -2,6 +2,7 @@
 - hosts: all
   vars_files:
     - vars/jovyan_vars.yml
+    - vars/git_vars.yml
 
   tasks:
     - name: add global gitconfig user.email
@@ -28,8 +29,9 @@
         path: "{{ git_remote_repos }}"
         state: directory
 
-    - name: checkout git repo
+    - name: checkout git repos
       ansible.builtin.git:
-        repo: "{{ github_repo }}"
-        dest: "{{ git_remote_path }}"
-
+        repo: "{{ item.repo }}"
+        dest: "{{ item.remote_path }}"
+      loop:
+        "{{ git_repos_list }}"
