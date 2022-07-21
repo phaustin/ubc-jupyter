@@ -1,4 +1,4 @@
-name: e211_notebook
+name: e350_notebook
 channels:
   - conda-forge
 dependencies:
@@ -17,15 +17,15 @@ dependencies:
   - pandas
   - pip
   - pillow
-  - python < 3.10
+  - python 
   - discretize
-  - empymod>=2.0.0
-  - ipywidgets>=0.6.0
-  - mkl>=2021.3.0
+  - empymod
+  - ipywidgets
+  - mkl
   - pymatsolver
   - qtconsole
   - qtpy
-  - scipy>=1.7
+  - scipy
   - scikit-learn
   - SimPEG
 # conda-lock --kind explicit --file environment.yml -p linux-64
