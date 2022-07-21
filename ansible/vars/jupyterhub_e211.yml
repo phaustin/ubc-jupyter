@@ -1,0 +1,22 @@
+---
+#
+#  setup_jupyterhub.yml
+#
+# 
+#
+container_version: latest
+dockerhub_id: jovyan
+hub_service_name: oauthe211hub
+hub_image_name: e211hub
+hub_domain: "e211hub.eoastest.xyz"
+notebook_image_name: "e211-notebook"
+notebook_version: "latest"
+vault_user_list: "e211_vault_user_list.txt"
+jupyterhub_template_list:
+  - { src: "templates/jupyterhub/docker-compose-jupyterhub.j2"  , dest: "{{ git_remote_path }}/jupyterhub/docker-compose-jupyterhub.yml" }
+  - { src: "templates/jupyterhub/Dockerfile_hub.j2" , dest: "{{ git_remote_path }}/jupyterhub/{{ hub_image_name }}-image/Dockerfile" }
+  - { src: "templates/jupyterhub/jupyterhub_config.j2" , dest: "{{ git_remote_path }}/jupyterhub/{{ hub_image_name }}-image/jupyterhub_config.py" }
+
+
+JHUB_OAUTH_CALLBACK_URL: "https://{{ hub_domain }}/hub/oauth_callback"
+

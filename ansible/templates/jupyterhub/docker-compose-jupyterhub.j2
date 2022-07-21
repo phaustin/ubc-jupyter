@@ -1,17 +1,17 @@
 version: '3.7'
 
 #
-# see vars/e211_jupyterhub.yml for
+# see vars/jupyterhub.yml for
 # hub_service_name, dockerhub_id, container_version, hub_domain
 #
 services:
 
-  {{ e211_hub_service_name }}:
+  {{ hub_service_name }}:
     build:
-        context: {{ e211_hub_image_name }}-image
+        context: {{ hub_image_name }}-image
         dockerfile: ./Dockerfile
-    image: {{ dockerhub_id }}/{{ e211_hub_image_name }}:{{ e211_container_version }}
-    container_name: {{ e211_hub_image_name }}_{{ e211_container_version }}
+    image: {{ dockerhub_id }}/{{ hub_image_name }}:{{ container_version }}
+    container_name: {{ hub_image_name }}_{{ container_version }}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
@@ -20,11 +20,11 @@ services:
       - JHUB_OAUTH_CLIENT_SECRET
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.{{ e211_hub_service_name }}.rule=Host(`{{ e211_hub_domain }}`)"
-      - traefik.http.routers.{{ e211_hub_service_name }}.tls=true
-      - traefik.http.routers.{{ e211_hub_service_name }}.tls.certresolver=lets-encrypt
-      - "traefik.http.routers.{{ e211_hub_service_name }}.service={{e211_hub_service_name }}"
-      - "traefik.http.services.{{ e211_hub_service_name }}.loadbalancer.server.port=8000"
+      - "traefik.http.routers.{{ hub_service_name }}.rule=Host(`{{ hub_domain }}`)"
+      - traefik.http.routers.{{ hub_service_name }}.tls=true
+      - traefik.http.routers.{{ hub_service_name }}.tls.certresolver=lets-encrypt
+      - "traefik.http.routers.{{ hub_service_name }}.service={{hub_service_name }}"
+      - "traefik.http.services.{{ hub_service_name }}.loadbalancer.server.port=8000"
     restart: on-failure
     networks:
       - {{ network_name }}

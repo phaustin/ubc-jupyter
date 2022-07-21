@@ -2,9 +2,9 @@
 - hosts: all
   vars_files:
     - vars/jovyan_vars.yml
-    - vars/e211_jupyterhub.yml
     - vars/vault.yml
   tasks:
+    - include_vars: "vars/jupyterhub_{{ course_name }}.yml"
     - name: start jupyterhub
       shell: "docker-compose -f docker-compose-jupyterhub.yml up -d"
       environment:
@@ -15,5 +15,6 @@
       args:
         chdir: "{{ git_remote_path }}/jupyterhub"
         executable: /bin/bash
+# ansible-playbook -i hosts.yml -u jovyan -l dash -e "course_name=e211" start_containers.yml 
 
 
