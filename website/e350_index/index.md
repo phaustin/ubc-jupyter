@@ -29,31 +29,31 @@ If you have feedback, we would like to hear from you!
 ## Contents
 
 ### Magnetics
-- [MagneticDipoleApplet.ipynb](mag/MagneticDipoleApplet.ipynb) - Magnetic dipole applet
-- [MagneticPrismApplet.ipynb](mag/MagneticPrismApplet.ipynb) - Magnetic prism applet
-- [Mag_Induced2D.ipynb](mag/Mag_Induced2D.ipynb)- Induced magnetic anomaly demo
-- [Mag_FitProfile.ipynb](mag/Mag_FitProfile.ipynb)- Fit one magnetic profile from field observation
+- [MagneticDipoleApplet.ipynb](https://e211hub.eoastest.xyz/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fgeoscixyz%2Fgeosci-labs&urlpath=lab%2Ftree%2Fgeosci-labs%2Fnotebooks/mag/MagneticDipoleApplet.ipynb) - Magnetic dipole applet
+- [MagneticPrismApplet.ipynb](https://e211hub.eoastest.xyz/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fgeoscixyz%2Fgeosci-labs&urlpath=lab%2Ftree%2Fgeosci-labs%2Fnotebooks/mag/MagneticPrismApplet.ipynb) - Magnetic prism applet
+- [Mag_Induced2D.ipynb](https://e211hub.eoastest.xyz/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fgeoscixyz%2Fgeosci-labs&urlpath=lab%2Ftree%2Fgeosci-labs%2Fnotebooks/mag/Mag_Induced2D.ipynb)- Induced magnetic anomaly demo
+- [Mag_FitProfile.ipynb](https://e211hub.eoastest.xyz/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fgeoscixyz%2Fgeosci-labs&urlpath=lab%2Ftree%2Fgeosci-labs%2Fnotebooks/mag/Mag_FitProfile.ipynb)- Fit one magnetic profile from field observation
 
 ### Seismic
-- [SeismicApplet.ipynb](seismic/SeismicApplet.ipynb) - Seismic Applet
-- [Seis_Refraction.ipynb](seismic/Seis_Refraction.ipynb) - Seismic refraction survey demo
-- [Seis_Reflection.ipynb](seismic/Seis_Reflection.ipynb) - Synthetic reflection seismogram
-- [Seis_NMO.ipynb](seismic/Seis_NMO.ipynb) - Normal moveout demo
-- [Seis_VerticalResolution.ipynb](seismic/Seis_VerticalResolution.ipynb) - Vertical resolution in reflection
+- [SeismicApplet.ipynb](https://e211hub.eoastest.xyz/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fgeoscixyz%2Fgeosci-labs&urlpath=lab%2Ftree%2Fgeosci-labs%2Fnotebooks/seismic/SeismicApplet.ipynb) - Seismic Applet
+- [Seis_Refraction.ipynb](https://e211hub.eoastest.xyz/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fgeoscixyz%2Fgeosci-labs&urlpath=lab%2Ftree%2Fgeosci-labs%2Fnotebooks/seismic/Seis_Refraction.ipynb) - Seismic refraction survey demo
+- [Seis_Reflection.ipynb](https://e211hub.eoastest.xyz/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fgeoscixyz%2Fgeosci-labs&urlpath=lab%2Ftree%2Fgeosci-labs%2Fnotebooks/seismic/Seis_Reflection.ipynb) - Synthetic reflection seismogram
+- [Seis_NMO.ipynb](https://e211hub.eoastest.xyz/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fgeoscixyz%2Fgeosci-labs&urlpath=lab%2Ftree%2Fgeosci-labs%2Fnotebooks/seismic/Seis_NMO.ipynb) - Normal moveout demo
+- [Seis_VerticalResolution.ipynb](https://e211hub.eoastest.xyz/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fgeoscixyz%2Fgeosci-labs&urlpath=lab%2Ftree%2Fgeosci-labs%2Fnotebooks/seismic/Seis_VerticalResolution.ipynb) - Vertical resolution in reflection
 
 ### Ground Penetrating Radar
-- [GPR_TBL4_DOI_Resolution.ipynb](gpr/GPR_TBL4_DOI_Resolution.ipynb) - Horizontal resolution + Probing distance of GPR
-- [GPR_Lab6_FitData.ipynb](gpr/GPR_Lab6_FitData.ipynb) - Fit field GPR data
-- [GPR_Attenuation.ipynb](gpr/GPR_Attenuation.ipynb) - Explore the impact of electrical conductivity on attenuation of signals
+- [GPR_TBL4_DOI_Resolution.ipynb](https://e211hub.eoastest.xyz/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fgeoscixyz%2Fgeosci-labs&urlpath=lab%2Ftree%2Fgeosci-labs%2Fnotebooks/gpr/GPR_TBL4_DOI_Resolution.ipynb) - Horizontal resolution + Probing distance of GPR
+- [GPR_Lab6_FitData.ipynb](https://e211hub.eoastest.xyz/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fgeoscixyz%2Fgeosci-labs&urlpath=lab%2Ftree%2Fgeosci-labs%2Fnotebooks/gpr/GPR_Lab6_FitData.ipynb) - Fit field GPR data
+- [GPR_Attenuation.ipynb](https://e211hub.eoastest.xyz/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fgeoscixyz%2Fgeosci-labs&urlpath=lab%2Ftree%2Fgeosci-labs%2Fnotebooks/gpr/GPR_Attenuation.ipynb) - Explore the impact of electrical conductivity on attenuation of signals
 
 ### Electromagnetics
-- [InductionRLcircuit_Harmonic.ipynb](em/InductionRLcircuit_Harmonic.ipynb) - Two coil app
-- [FDEM_ThreeLoopModel.ipynb](em/FDEM_ThreeLoopModel.ipynb) - EM induction explained by a 3-loop circuit model
-- [EM_Pipeline.ipynb](em/EM_Pipeline.ipynb) - EM response over a pipeline
-- [EM_EM31.ipynb](em/EM_EM31.ipynb) - EM-31 response and apparent conductivity
+- [InductionRLcircuit_Harmonic.ipynb](https://e211hub.eoastest.xyz/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fgeoscixyz%2Fgeosci-labs&urlpath=lab%2Ftree%2Fgeosci-labs%2Fnotebooks/em/InductionRLcircuit_Harmonic.ipynb) - Two coil app
+- [FDEM_ThreeLoopModel.ipynb](https://e211hub.eoastest.xyz/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fgeoscixyz%2Fgeosci-labs&urlpath=lab%2Ftree%2Fgeosci-labs%2Fnotebooks/em/FDEM_ThreeLoopModel.ipynb) - EM induction explained by a 3-loop circuit model
+- [EM_Pipeline.ipynb](https://e211hub.eoastest.xyz/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fgeoscixyz%2Fgeosci-labs&urlpath=lab%2Ftree%2Fgeosci-labs%2Fnotebooks/em/EM_Pipeline.ipynb) - EM response over a pipeline
+- [EM_EM31.ipynb](https://e211hub.eoastest.xyz/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fgeoscixyz%2Fgeosci-labs&urlpath=lab%2Ftree%2Fgeosci-labs%2Fnotebooks/em/EM_EM31.ipynb) - EM-31 response and apparent conductivity
 
 ### Direct Current Resistivity
-- [DC_SurveyDataInversion.ipynb](dcip/DC_SurveyDataInversion.ipynb) - Physics, survey, data and interpretation
+- [DC_SurveyDataInversion.ipynb](https://e211hub.eoastest.xyz/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fgeoscixyz%2Fgeosci-labs&urlpath=lab%2Ftree%2Fgeosci-labs%2Fnotebooks/dcip/DC_SurveyDataInversion.ipynb) - Physics, survey, data and interpretation
 
 +++
 
