@@ -39,5 +39,8 @@ RUN echo "Installing python packages using pip from requirements.txt..." \
     && ${NB_PYTHON_PREFIX}/bin/pip install --no-cache-dir -r ${HOME}/requirements.txt \
     && rm conda-linux-64.lock requirements.txt
 
+RUN echo "update e350 version tag" \
+    && touch ${HOME}/e350_version_july_20.txt
+
 ## document exposed port 8888 for jupyter notebook
 EXPOSE 8888
