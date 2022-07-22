@@ -4,40 +4,12 @@
 #
 book_remote_path: "./book_html_source"
 git_remote_path: "{{ git_remote_repos }}/ubc-jupyter"
-website_dir: "website_e350"
-websites:
-  e350_website:
-    book_domain: "courses.{{ root_domain }}"
-    book_prefix: "e350"
-    book_name: "a301_book"
-    book_remote_html: "{{ book_remote_path }}/html"
-    book_local_html: "/home/phil/repos/a301_2020/_build/html"
-    book_route: "/a301"
-    dest_dir: "{{ git_remote_path }}/{{ website_dir }}/{{ book_remote_path }}"
-    website_template_list:
-      - { src: "templates/website/docker-compose-website_noauth.j2"  , dest: "{{ git_remote_path }}/website/docker-compose-website.yml" }
-
-  e211_website:
-    book_domain: "courses.{{ root_domain }}"
-    book_name: "e211_book"
-    book_remote_path: "./book_html_source"
-    book_remote_html: "{{ book_remote_path }}/html"
-    book_local_html: "/home/phil/repos/eosc211_students/_build/html"
-    website_dir: "{{ git_remote_path }}/website_e211"
-    html_dir: "{{ website_dir }}/{{ book_remote_path }}"
-    website_template_list:
-      - { src: "templates/website/docker-compose-website_noauth.j2"  , dest: "{{ git_remote_path }}/website_e211/docker-compose-website.yml" }
-
-  climate_jupyterhub:
-    book_name: "climate_physics"
-    book_remote_path: "./book_html_source"
-    book_remote_html: "{{ book_remote_path }}/html"
-    book_local_html: "/home/phil/repos/ClimateLaboratoryBook/content/_build/html"
-    book_route: "/climate_physics"
-    dest_dir: "{{ git_remote_path }}/website/{{ book_remote_path }}"
-    website_template_list:
-      - { src: "templates/website/docker-compose-website_noauth.j2"  , dest: "{{ git_remote_path }}/website/docker-compose-website.yml" }
-
-
-
+website_dir: "{{ git_remote_path }}/website_e211"
+book_domain: "courses.{{ root_domain }}"
+book_prefix: "/e211"
+book_local_html: "/home/phil/repos/eosc211_students/_build/html/"
+book_remote_html: "{{ website_dir }}/html/"
+dest_dir: "{{ git_remote_path }}/{{ website_dir }}/{{ book_remote_path }}"
+website_template_list:
+  - { src: "templates/website/docker-compose-website_noauth.j2"  , dest: "{{ website_dir }}/docker-compose-website.yml" }
 
