@@ -45,7 +45,7 @@ RUN echo "Installing python packages using pip from requirements.txt..." \
     && rm conda-linux-64.lock requirements.txt
 
 RUN echo "update e350 version tag" \
-    && touch ${HOME}/e350_version_july_21.txt
+    && touch ${HOME}/e350_version_july_21_monitor.txt
 
 ## document exposed port 8888 for jupyter notebook
 EXPOSE 8888
