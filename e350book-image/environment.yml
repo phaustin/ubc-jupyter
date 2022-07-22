@@ -11,6 +11,7 @@ dependencies:
   - ghp-import
   - git
   - jupytext
+  - jupyter-resource-usage
   - matplotlib
   - numpy
   - nbgitpuller
