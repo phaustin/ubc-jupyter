@@ -25,8 +25,6 @@ services:
       dockerfile: ./Dockerfile
       args:
         OWNER: "jovyan"
-    depends_on:
-      - base_notebook
     container_name: minimal_notebook
     labels:
       - "traefik.enable=false"
@@ -41,8 +39,6 @@ services:
       dockerfile: ./Dockerfile
       args:
         OWNER: "jovyan"
-    depends_on:
-      - minimal_notebook
     container_name: e211_notebook
     labels:
       - "traefik.enable=false"
@@ -57,8 +53,6 @@ services:
       dockerfile: ./Dockerfile
       args:
         OWNER: "jovyan"
-    depends_on:
-      - minimal_notebook
     container_name: e350_notebook
     labels:
       - "traefik.enable=false"

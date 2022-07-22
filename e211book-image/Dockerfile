@@ -23,7 +23,11 @@ COPY --chown=${NB_USER}:${NB_GID} ./conda-linux-64.lock ./requirements.txt ${HOM
 USER ${NB_UID}
 
 RUN echo "create work directory owned by jovyan" \
-    && mkdir -p ${HOME}/work
+    && mkdir -p ${HOME}/work \
+    && mkdir -p ${HOME}/.jupyter
+
+RUN echo "copy contents of .jupyter" 
+COPY --chown=${NB_USER}:${NB_GID} ./dotjupyter  ${HOME}/.jupyter/
 
 RUN echo "conda activate ${CONDA_ENV}" >> ${HOME}/.bashrc
 
@@ -39,8 +43,8 @@ RUN echo "Installing python packages using pip from requirements.txt..." \
     && ${NB_PYTHON_PREFIX}/bin/pip install --no-cache-dir -r ${HOME}/requirements.txt \
     && rm conda-linux-64.lock requirements.txt
 
-RUN echo "update e350 version tag" \
-    && touch ${HOME}/e211_version_july_20.txt
+RUN echo "update e211 version tag" \
+    && touch ${HOME}/e211_version_july_21.txt
     
 ## document exposed port 8888 for jupyter notebook
 EXPOSE 8888
