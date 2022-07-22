@@ -12,6 +12,7 @@ dependencies:
   - git
   - jupytext
   - jupyter-book
+  - jupyter-resource-usage
   - matplotlib
   - numpy
   - nbgitpuller
