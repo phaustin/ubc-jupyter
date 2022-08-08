@@ -1,5 +1,5 @@
 ARG OWNER=jovyan
-ARG BASE_CONTAINER=$OWNER/minimal-notebook:latest
+ARG BASE_CONTAINER=jupyter/minimal-notebook:latest
 FROM $BASE_CONTAINER
 ENV NB_PYTHON_PREFIX=${CONDA_DIR}
 

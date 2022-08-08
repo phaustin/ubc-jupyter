@@ -2,43 +2,11 @@ version: '3'
 
 services:
 
-  base_notebook:
-    image: phaustin/base-notebook:latest
-    build:
-      context: base-notebook
-      dockerfile: ./Dockerfile
-      args:
-        NB_USER: "jovyan"
-        NB_UID: "1000"
-        NB_GID: "100"
-    container_name: base_notebook
-    labels:
-      - "traefik.enable=false"
-    # ports:
-    #   - "8888:8888"
-    # command: ["tail", "-F","missing_file"]
-
-  minimal_notebook:
-    image: phaustin/minimal-notebook:latest
-    build:
-      context: minimal-notebook
-      dockerfile: ./Dockerfile
-      args:
-        OWNER: "phaustin"
-    container_name: minimal_notebook
-    labels:
-      - "traefik.enable=false"
-    # ports:
-    #   - "8889:8888"
-    # command: ["tail", "-F","missing_file"]
-
   e211_notebook:
     image: phaustin/e211-notebook:latest
     build:
       context: e211book-image
       dockerfile: ./Dockerfile
-      args:
-        OWNER: "jovyan"
     container_name: e211_notebook
     labels:
       - "traefik.enable=false"
@@ -47,12 +15,10 @@ services:
     # command: ["tail", "-F","missing_file"]
     
   e350_notebook:
-    image: jovyan/e350-notebook:latest
+    image: phaustin/e350-notebook:latest
     build:
       context: e350book-image
       dockerfile: ./Dockerfile
-      args:
-        OWNER: "jovyan"
     container_name: e350_notebook
     labels:
       - "traefik.enable=false"
