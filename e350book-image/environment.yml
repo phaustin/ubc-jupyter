@@ -18,7 +18,7 @@ dependencies:
   - pandas
   - pip
   - pillow
-  - python 
+  - python<3.10
   - discretize
   - empymod
   - ipywidgets
