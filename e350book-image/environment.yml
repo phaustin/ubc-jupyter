@@ -12,13 +12,13 @@ dependencies:
   - git
   - jupytext
   - jupyter-resource-usage
-  - matplotlib
-  - numpy
+  - matplotlib=3.4.3
+  - numpy=1.21
   - nbgitpuller
   - pandas
   - pip
   - pillow
-  - python<3.10
+  - python=3.9 
   - discretize
   - empymod
   - ipywidgets
